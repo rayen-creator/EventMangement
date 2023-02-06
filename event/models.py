@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from person.models import Person
 
 from django.core.exceptions import ValidationError
 from datetime import datetime
@@ -30,6 +31,12 @@ class Event(models.Model):
     evt_date = models.DateTimeField(null=True)
     created_date = models.DateField(auto_now_add=True)
     updated_date = models.DateField(auto_now=True)
+    participant= models.ManyToManyField(Person ,through='participants' , related_name='participant' )
+    organisateur =models.ForeignKey(Person, on_delete=models.SET_NULL,blank=True,null=True)
+
+    def __str__(self):
+        return self.title
+    
 
     class Meta:
         constraints = [
@@ -40,3 +47,12 @@ class Event(models.Model):
                 name='Please check out the event date'
             ),
         ]
+
+class Participants(models.Model):
+    personne=models.ForeignKey(Person , on_delete=models.CASCADE)
+    event=models.ForeignKey(Event, on_delete=models.CASCADE)
+    date_participation=models.DateTimeField(default=datetime.now)
+    participation_name='participation '
+    def __str__(self):
+        return self.participation_name
+    
