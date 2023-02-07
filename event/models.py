@@ -36,7 +36,9 @@ class Event(models.Model):
 
     def __str__(self):
         return self.title
-    
+
+    # def get_participant(self):
+    #     return self.participant.all()
 
     class Meta:
         constraints = [
