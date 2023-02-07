@@ -55,6 +55,7 @@ class Participants(models.Model):
     event=models.ForeignKey(Event, on_delete=models.CASCADE)
     date_participation=models.DateTimeField(default=datetime.now)
     participation_name='participation '
+    
     def __str__(self):
         return self.participation_name
     
