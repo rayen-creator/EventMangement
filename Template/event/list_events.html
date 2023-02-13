@@ -1,0 +1,33 @@
+<style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 50%;
+    }
+    
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: center;
+      padding: 8px;
+    }
+    
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+    </style>
+<h1>Listes des evenements</h1>
+{% for i in list %}
+    <div>
+        <table>
+            <tr>
+              <th>Id</th>
+              <th>name</th>
+            </tr>
+            <tr>
+              <td>{{i.id}}</td>
+              <td> {{i.title}}</td>
+            </tr>
+          </table>
+      
+    </div>
+{% endfor %}
