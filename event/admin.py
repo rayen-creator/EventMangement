@@ -11,7 +11,7 @@ class EventAdmin(admin.ModelAdmin):
         'nbr_participant','evt_date','created_date','updated_date','e','organisateur'
     )
     list_per_page=2
-    ordering=['title']
+    ordering=['title'] 
     # list_display=[field.name for field in Event._meta.get_fields()]
     def e(self,obj):
         count=obj.participant.count()
