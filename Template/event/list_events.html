@@ -1,4 +1,33 @@
-<style>
+{% extends 'index.html' %} 
+
+{% block body %} 
+<div class="container">
+  <div class="mt-3">
+    <p class="mx-5"><strong>nombre des evenements :</strong>{{nbr}}</p>
+  
+  </div>
+  <div class="row flex-row flex-nowrap mb-5">
+    {% for i in list %}
+    <div class="card mx-5 mt-2  " style="width: 18rem">
+      <img src="{{i.image.url}}" class="card-img-top" alt="img" />
+      <div class="card-body">
+        <h5 class="card-title">{{i.title}}</h5>
+        <p class="card-text">Description : {{i.description}}</p>
+        <p class="card-text">Nombre : {{i.nbr_participant}}</p>
+
+        <a href="#" class="btn btn-primary">View details</a>
+      </div>
+      <div class="card-footer">
+        <p>{{i.evt_date}}</p>
+      </div>
+    </div>
+    
+    {% endfor %}
+  </div>
+</div>
+
+
+<!-- <style>
     table {
       font-family: arial, sans-serif;
       border-collapse: collapse;
@@ -15,6 +44,8 @@
       background-color: #dddddd;
     }
     </style>
+
+  
 <h1>Listes des evenements</h1>
 {% for i in list %}
     <div>
@@ -31,3 +62,6 @@
       
     </div>
 {% endfor %}
+
+<p><strong>nombre des evenements :</strong>{{nbr}}</p> -->
+{% endblock %}
