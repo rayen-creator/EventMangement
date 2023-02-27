@@ -29,9 +29,31 @@ class ListEvents(ListView):
         eventsTrue=Event.objects.filter(state=True)
         return eventsTrue
 
+#method 1 using class based view
 class AddEvent(CreateView):
 
     template_name = "event/addEvent.html"
     model = Event
     form_class = EvenementForm
+    success_url = reverse_lazy('Affiche')
+
+#method 2 using custom function
+def AddEv(req):
+    form=EvenementForm()
+    if req.method=='POST':
+         form=EvenementForm(req.POST , req.FILES)
+         if form.is_valid():
+                form.save()
+                return HttpResponse("Event Added")
+    return render(req,'event/addEvent.html',{'form':form})
+
+class UpdateEvent(UpdateView):
+    template_name = "event/updateEvent.html"
+    model = Event
+    form_class = EvenementForm
+    success_url = reverse_lazy('Affiche')
+
+class DeleteEvent(DeleteView):
+    model = Event
+    template_name = "event/deleteEvent.html"
     success_url = reverse_lazy('Affiche')

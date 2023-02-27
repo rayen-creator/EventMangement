@@ -3,9 +3,7 @@
   method="post"
   class="form-control"
   enctype="multipart/form-data"
-  action="{% url 'add' %}"
 >
-<!-- action used with function -->
   {% csrf_token %} {{form.as_ul}}
 
   <input type="submit" value="Save" name="" id="" />

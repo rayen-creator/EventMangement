@@ -3,6 +3,10 @@ from .views import *
 urlpatterns = [
     # path('<str:name>', index),
     # path('list/',list_event),
-    path('affiche/', ListEvents.as_view(), name="Affiche"),
-    path('add/', AddEvent.as_view(), name="add"),
+    path('', ListEvents.as_view(), name="Affiche"),
+    path('add/', AddEv, name="add"),
+    path('update/<int:pk>', UpdateEvent.as_view(), name="update"),
+    path('delete/<int:pk>', DeleteEvent.as_view(), name="delete"),
+
+
 ]
