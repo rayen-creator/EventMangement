@@ -98,3 +98,23 @@ def participer(request, event_id):
     event.nbr_participant += 1
     event.save()
     return redirect('Affiche')
+
+def cancel (req,event_id):
+    user=req.user
+    event=Event.objects.get(id=event_id)
+    participant=Participants.objects.get(personne=user,event=event)
+    participant.delete()
+    event.nbr_participant -= 1
+    event.save()
+    return redirect('Affiche')
+
+def eventDetails(request, event_id):
+    user=request.user
+    event=Event.objects.get(event_id=id)
+    if user:
+          participant=Participants.objects.get(personne=user,event=event)
+    if participant:
+        button_disabled=True
+    else:
+        button_disabled=False
+    return render(req,'event/details.html',{'e':event,'button_disabled':button_disabled})

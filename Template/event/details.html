@@ -20,12 +20,28 @@
         This is a wider card with supporting text below as a natural lead-in to
         additional content. This content is a little bit longer.
       </p>
-      <button class="btn btn-primary">
-        <a class="btn btn-primary" href="{% url 'participer' e.id %}">Participer</a>
+      {% if button_disabled %}
+      <button class="btn btn-primary" disabled>
+        <a class="btn btn-primary" href="{% url 'participer' e.id %}"
+          >Participer</a
+        >
+      </button>
+      <button class="btn btn-danger">
+        <a class="btn btn-danger" href="{% url 'cancel' e.id %}"
+          >cancel</a
+        >
       </button>
 
-      <button class="btn btn-danger">Cancel</button>
-
+      {% else %}
+      <button class="btn btn-primary">
+        <a class="btn btn-primary" href="{% url 'participer' e.id %}"
+          >Participer</a
+        >
+      </button>
+      <button class="btn btn-danger" disabled>
+        <a class="btn btn-danger" href="{% url 'cancel' e.id %}">cancel</a>
+      </button>
+      {% endif %}
       <p class="card-text mt-2">
         <small class="text-muted">Created date : {{ e.created_date }}</small>
       </p>
